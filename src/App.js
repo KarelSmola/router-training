@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AppLayout from "./pages/AppLayout";
+import Users from "./components/Users";
+import SportList from "./components/SportList";
+import SportsIndividual from "./components/SportsIndividual";
+import SportsCollective from "./components/SportsCollective";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<AppLayout />} />
+        <Route path="users" element={<Users />} />
+        <Route path="sports" element={<SportList />}>
+          <Route path="individual" element={<SportsIndividual />} />
+          <Route path="collective" element={<SportsCollective />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
