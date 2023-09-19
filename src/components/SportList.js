@@ -1,6 +1,9 @@
+import { useWelcome } from "../contexts/WelcomeContext";
 import SportItem from "./SportItem";
 
-const SportList = ({ sports }) => {
+const SportList = () => {
+  const { sports } = useWelcome();
+
   return (
     <ul>
       {sports.map((sport) => (

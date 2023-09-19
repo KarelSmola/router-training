@@ -1,7 +1,9 @@
 import React from "react";
+import { useWelcome } from "../contexts/WelcomeContext";
 import { useParams } from "react-router-dom";
 
-const Sport = ({ sports }) => {
+const Sport = () => {
+  const { sports, welcomeMessage } = useWelcome();
   const { id } = useParams();
 
   const filterSport = sports.filter((sport) => {
@@ -16,6 +18,7 @@ const Sport = ({ sports }) => {
         <li key={sport.id}>
           <p>{sport.id}</p>
           <p>{sport.name}</p>
+          <p>{welcomeMessage}</p>
         </li>
       ))}
     </ul>
