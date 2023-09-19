@@ -1,20 +1,26 @@
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AppLayout from "./pages/AppLayout";
-import Users from "./components/Users";
 import SportList from "./components/SportList";
-import SportsIndividual from "./components/SportsIndividual";
-import SportsCollective from "./components/SportsCollective";
+import Sport from "./components/Sport";
+import Users from "./components/Users";
+import AppLayout from "./pages/AppLayout";
+
+const data = [
+  { id: "1", name: "hockey", individual: false },
+  { id: "2", name: "football", individual: false },
+  { id: "3", name: "MTB", individual: true },
+];
 
 const App = () => {
+  const [sports, setSports] = useState(data);
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<AppLayout />} />
+        <Route path="" element={<AppLayout />} />
+        <Route path="sport" element={<SportList sports={data} />} />
+        <Route path="sport/:id" element={<Sport sports={data} />} />
         <Route path="users" element={<Users />} />
-        <Route path="sports" element={<SportList />}>
-          <Route path="individual" element={<SportsIndividual />} />
-          <Route path="collective" element={<SportsCollective />} />
-        </Route>
       </Routes>
     </BrowserRouter>
   );

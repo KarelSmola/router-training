@@ -3,8 +3,11 @@ import { NavLink } from "react-router-dom";
 const Navigation = () => {
   return (
     <nav>
-      <NavLink to="users">Users</NavLink>
-      <NavLink to="sports">Sports</NavLink>
+      <ul>
+        <li>
+          <NavLink to="sport">Sport</NavLink>
+        </li>
+      </ul>
     </nav>
   );
 };

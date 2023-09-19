@@ -1,14 +1,12 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
-import SportsNav from "./SportsNav";
+import SportItem from "./SportItem";
 
-const SportList = () => {
+const SportList = ({ sports }) => {
   return (
-    <div>
-      <SportsNav />
-      <Outlet />
-      <footer>Sport list Copyright 2023</footer>
-    </div>
+    <ul>
+      {sports.map((sport) => (
+        <SportItem key={sport.id} id={sport.id} sportName={sport.name} />
+      ))}
+    </ul>
   );
 };
 
